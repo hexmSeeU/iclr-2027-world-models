@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {validateDataset} from '../search.mjs';
+const root=new URL('../',import.meta.url);
+test('site has accessible search, live results, and source disclaimer',()=>{const html=fs.readFileSync(new URL('index.html',root),'utf8');for(const fragment of ['role="search"','for="search"','aria-live="polite"','不代表已接收','id="empty"','id="methodology"'])assert.ok(html.includes(fragment),fragment);});
+test('local assets referenced by HTML exist',()=>{const html=fs.readFileSync(new URL('index.html',root),'utf8');for(const path of [...html.matchAll(/(?:href|src)="\.\/([^"]+)"/g)].map(m=>m[1]))if(!path.startsWith('data/'))assert.ok(fs.existsSync(new URL(path,root)),path);});
+test('rendering never injects dataset text as HTML',()=>{const js=fs.readFileSync(new URL('app.mjs',root),'utf8');assert.ok(!js.includes('innerHTML'));assert.ok(js.includes('textContent'));});
+test('stylesheet provides mobile layout and reduced-motion rules',()=>{const css=fs.readFileSync(new URL('styles.css',root),'utf8');assert.ok(css.includes('@media(max-width:760px)'));assert.ok(css.includes('prefers-reduced-motion'));});
+test('published dataset validates, remains ICLR 2027, and records sources',()=>{const dataset=JSON.parse(fs.readFileSync(new URL('data/papers.json',root),'utf8'));validateDataset(dataset);assert.ok(dataset.metadata.retrievedAt);assert.ok(dataset.metadata.coverage);assert.ok(dataset.metadata.limitations);for(const paper of dataset.papers){assert.ok(paper.sourceUrl?.startsWith('https://'));assert.ok(paper.status);assert.ok(!paper.id.startsWith('fixture-'));}});
