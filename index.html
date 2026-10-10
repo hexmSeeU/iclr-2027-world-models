@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173e35">
+  <meta name="description" content="ICLR 2027 world model 相关投稿检索目录。按标题、摘要、标签与相关性说明搜索，直接访问论文原文。">
+  <title>World Model Papers · ICLR 2027</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.mjs"></script>
+</head>
+<body>
+  <a class="skip-link" href="#catalog">跳到论文目录</a>
+  <header class="site-header wrap">
+    <a class="brand" href="./" aria-label="World Model Papers 首页"><span class="brand-symbol" aria-hidden="true">w<span>m</span></span><span>WORLD MODEL PAPERS</span></a>
+    <nav aria-label="主导航"><a href="#methodology">收录说明 <span aria-hidden="true">↗</span></a><a href="https://github.com/hexmSeeU/iclr-2027-world-models" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></nav>
+  </header>
+  <main class="wrap">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> ICLR 2027 · RESEARCH INDEX</p>
+        <h1 id="hero-title">Learning to model<br>the <span>world.</span></h1>
+        <p class="hero-description">从感知、预测到行动，探索 world model 相关投稿。<br class="desktop-break">一个可搜索、可追溯的论文阅读入口。</p>
+        <div class="hero-meta"><span>来源 <a href="https://acceptodds.com/" target="_blank" rel="noopener noreferrer">AcceptOdds</a> + OpenReview</span><span id="updated">正在读取数据</span></div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 360 270" fill="none"><defs><pattern id="grid" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".8" fill="#d8ded2"/></pattern></defs><rect width="360" height="270" fill="url(#grid)"/><path d="M29 186 95 151 164 186 235 146 330 193M29 148 95 113 164 148 235 108 330 155M29 110 95 75 164 110 235 70 330 117" stroke="#cfdbd1"/><path d="M95 75v114m69-79v114m71-154v114" stroke="#cfdbd1"/><path d="m95 113 69-36 71 31-71 40-69-35Z" fill="#e3ebd8" stroke="#426958"/><path d="m95 113 69 35v76l-69-35v-76Z" fill="#c7d9be" stroke="#426958"/><path d="m164 148 71-40v76l-71 40v-76Z" fill="#6e927d" stroke="#426958"/><path d="m95 75 69-36 71 31-71 40-69-35Z" stroke="#527761" stroke-dasharray="4 4"/><path d="M95 75v38m69-3v38m71-78v38" stroke="#527761" stroke-dasharray="4 4"/><circle cx="95" cy="75" r="4" fill="#c45b38"/><circle cx="164" cy="39" r="4" fill="#c45b38"/><circle cx="235" cy="70" r="4" fill="#c45b38"/><circle cx="164" cy="110" r="4" fill="#c45b38"/><path d="M258 91h45m-19-15 19 15-19 15" stroke="#c45b38" stroke-width="1.5"/><text x="31" y="247" fill="#6b766c" font-size="9" font-family="monospace" letter-spacing="2">OBSERVE → PREDICT → ACT</text></svg>
+      </div>
+    </section>
+    <section class="catalog" id="catalog" aria-labelledby="catalog-heading">
+      <div class="catalog-topline"><h2 id="catalog-heading">论文目录 <span id="total-count" class="count-badge">—</span></h2><span class="quiet-label">SUBMISSIONS, NOT ACCEPTANCES</span></div>
+      <form class="search-box" id="search-form" role="search">
+        <svg aria-hidden="true" width="21" height="21" viewBox="0 0 24 24" fill="none"><circle cx="10.7" cy="10.7" r="6.7" stroke="currentColor" stroke-width="1.6"/><path d="m16 16 5 5" stroke="currentColor" stroke-width="1.6"/></svg>
+        <label class="sr-only" for="search">搜索标题、摘要、标签或相关性说明</label>
+        <input id="search" type="search" placeholder="搜索标题、摘要、标签… 试试 robotics / planning" autocomplete="off" spellcheck="false">
+        <button type="button" id="clear-search" hidden aria-label="清空搜索">清空</button><kbd aria-hidden="true">/</kbd>
+      </form>
+      <div class="filter-bar"><div class="category-filters" role="group" aria-label="相关性筛选"><button type="button" class="filter active" data-category="all" aria-pressed="true">全部 <span id="all-count">0</span></button><button type="button" class="filter" data-category="core" aria-pressed="false">核心相关 <span id="core-count">0</span></button><button type="button" class="filter" data-category="adjacent" aria-pressed="false">拓展相关 <span id="adjacent-count">0</span></button></div><div class="select-filters"><label for="tag" class="sr-only">研究主题</label><select id="tag"><option value="all">所有主题</option></select><label for="sort" class="sr-only">排序方式</label><select id="sort"><option value="relevance">相关性优先</option><option value="title">标题 A–Z</option></select></div></div>
+      <div class="results-line"><p id="result-count" role="status" aria-live="polite">正在加载论文…</p><a href="./data/papers.json" download="iclr-2027-world-models.json">下载数据 <span aria-hidden="true">↓</span></a></div>
+      <p id="verification-count" class="verification-summary"></p>
+      <div id="papers" class="paper-list"></div>
+      <div id="empty" class="empty-state" hidden><span class="empty-mark" aria-hidden="true">⌕</span><h3 id="empty-title">没有找到匹配的论文</h3><p id="empty-description">换一个关键词，或清除筛选条件再试试。</p><button type="button" id="reset-filters" class="secondary-button">清除所有筛选</button></div>
+      <button id="load-more" class="load-more" type="button" hidden>查看更多论文</button>
+      <noscript><p>搜索需要启用 JavaScript。你仍可<a href="./data/papers.json">下载完整论文数据</a>。</p></noscript>
+    </section>
+    <section class="methodology" id="methodology" aria-labelledby="methodology-heading"><div><p class="eyebrow">ABOUT THE COLLECTION</p><h2 id="methodology-heading">阅读从这里开始，<br>判断交给论文。</h2></div><div class="methodology-copy"><p id="coverage">正在读取检索范围。</p><p>「核心相关」聚焦世界模型的学习、预测、模拟与决策；「拓展相关」覆盖紧密相关的表示、评测与应用。分类与相关性说明用于辅助筛选，不代表会议评审结论。</p><p id="limitations"></p><p class="notice">收录的是投稿，不代表已接收。本站不展示或背书录用概率；论文信息与最终状态请以 OpenReview 官方页面为准。</p><div class="source-links" id="source-links"><a href="https://acceptodds.com/" target="_blank" rel="noopener noreferrer">AcceptOdds ↗</a><a href="https://openreview.net/group?id=ICLR.cc/2027/Conference" target="_blank" rel="noopener noreferrer">OpenReview ↗</a></div></div></section>
+  </main>
+  <footer class="wrap"><span>WORLD MODEL PAPERS <span class="footer-separator">/</span> ICLR 2027</span><span>保持好奇，回到原文。</span></footer>
+</body>
+</html>
